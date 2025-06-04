@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>3-Tier App</title>
+</head>
+<body>
+  <h1>Welcome to the 3-Tier Docker App</h1>
+  <p>Data from backend and database:</p>
+  <pre id="data"></pre>
+
+  <script>
+    fetch('http://localhost:5000/data')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('data').textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(error => {
+        document.getElementById('data').textContent = 'Error fetching data';
+        console.error('Fetch error:', error);
+      });
+  </script>
+</body>
+</html>
